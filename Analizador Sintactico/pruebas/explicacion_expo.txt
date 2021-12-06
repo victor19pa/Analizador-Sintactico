@@ -1,0 +1,45 @@
+para continuar con la presentacion vamos a explicar un 
+poco como se contruyo el enalizador sintactico
+
+para esto utilizamos la libreria PLY (python lex-yacc)
+al igual que en el analizador lexico
+
+lo primero que emos el la precedencia, esto sirve para 
+dar prioridad a las distintas operaciones que se van a
+recibir el analizador sintactico
+
+por ejemplo:
+si tubieramos una operacion aritmetica que tenga alguna
+parte entre parentesis, otra entre corchetes, multiplicacion,
+division, suma, resta  la precedencia toma las prioridades
+desde el ultimo elemento de la lista hacia el primero
+entonces lo que se realizaria primero como vemos sera 
+la operacion que esta entre corchetes ya que esta mas abajo 
+que las demas en la precedencia, luego se realiza la 
+operacion entre parentesis, luego la multiplicacion o division
+ya que tienen la misma precedencia y por ultimo la suma o resta
+
+gramatica:
+para cada regla de la gramatica tenemos una funcion definida
+con p_ al principio por convencion de la libreria PLY 
+el resto del nombre puede ser de nuestra eleccion
+
+dentro de cada funcion definimos la produccion entre comillas triples
+
+ademas de definir una funcion para cada regla tambien podemos
+definir varias reglas o preducciones dentro de una misma fuincion
+
+podemos hacer llamados a otras reglas colocando el nombre de la regla 
+a la que necesitamos llamar despues de los dos puntos en la produccion
+
+tambien tenemos una funcion especial de la libreria PLY que nos permite
+manejar los errores que se produscan en el analisis la cual nos podria
+decir el numero de fila y el token que esta causando el error de sintaxis
+
+la gramatica que desarrollamos nos permite hacer: 
+declaraciones de variables
+operaciones aritmenticas basicas
+sentencias if else
+sentencias for
+concatenar cadenas de caracteres
+imprimir

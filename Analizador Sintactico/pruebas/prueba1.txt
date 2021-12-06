@@ -1,0 +1,7 @@
+x=48
+
+if x<>48 then {
+    imp("x no es igual a 48")
+}
+else {
+    imp("x es igual a 48")

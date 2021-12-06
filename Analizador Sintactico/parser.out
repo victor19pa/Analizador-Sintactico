@@ -1,0 +1,1765 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMA
+    PUNTOCOMA
+
+Grammar
+
+Rule 0     S' -> programa
+Rule 1     programa -> listaSentencias
+Rule 2     listaSentencias -> sentencia
+Rule 3     listaSentencias -> listaSentencias sentencia
+Rule 4     sentencia -> IMP IPARENT expresion DPARENT
+Rule 5     sentencia -> ID ASIGNAR expresion
+Rule 6     sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+Rule 7     sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+Rule 8     expresion -> term
+Rule 9     expresion -> expresion SUMA expresion
+Rule 10    expresion -> expresion RESTA expresion
+Rule 11    expresion -> expresion MULTIPLICADO expresion
+Rule 12    expresion -> expresion DIVIDIDO expresion
+Rule 13    expresion -> term concatenar term
+Rule 14    concatenar -> CONCAT
+Rule 15    condicion -> expresion relacion expresion
+Rule 16    relacion -> ASIGNAR
+Rule 17    relacion -> NOIGUAL
+Rule 18    relacion -> MENORQ
+Rule 19    relacion -> MAYORQ
+Rule 20    relacion -> MENORIGUALQ
+Rule 21    relacion -> MAYORIGUALQ
+Rule 22    relacion -> IGUAL
+Rule 23    term -> factor
+Rule 24    term -> IPARENT expresion DPARENT
+Rule 25    term -> ICOR expresion DCOR
+Rule 26    factor -> ID
+Rule 27    factor -> RESTA ENTERO
+Rule 28    factor -> RESTA DECIMAL
+Rule 29    factor -> ENTERO
+Rule 30    factor -> DECIMAL
+Rule 31    factor -> STR
+Rule 32    factor -> empty
+Rule 33    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASIGNAR              : 5 16
+COMA                 : 
+CONCAT               : 14
+DCOR                 : 25
+DECIMAL              : 28 30
+DIVIDIDO             : 12
+DLLAVE               : 6 7 7
+DPARENT              : 4 24
+ELSE                 : 7
+ENTERO               : 27 29
+FOR                  : 6
+ICOR                 : 25
+ID                   : 5 26
+IF                   : 7
+IGUAL                : 22
+ILLAVE               : 6 7 7
+IMP                  : 4
+IPARENT              : 4 24
+MAYORIGUALQ          : 21
+MAYORQ               : 19
+MENORIGUALQ          : 20
+MENORQ               : 18
+MULTIPLICADO         : 11
+NOIGUAL              : 17
+PUNTOCOMA            : 
+RESTA                : 10 27 28
+STR                  : 31
+SUMA                 : 9
+THEN                 : 6 7
+TO                   : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+concatenar           : 13
+condicion            : 7
+empty                : 32
+expresion            : 4 5 6 9 9 10 10 11 11 12 12 15 15 24 25
+factor               : 23
+listaSentencias      : 1 3 6 7 7
+programa             : 0
+relacion             : 15
+sentencia            : 2 3 6
+term                 : 8 13 13
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . programa
+    (1) programa -> . listaSentencias
+    (2) listaSentencias -> . sentencia
+    (3) listaSentencias -> . listaSentencias sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    programa                       shift and go to state 1
+    listaSentencias                shift and go to state 2
+    sentencia                      shift and go to state 3
+
+state 1
+
+    (0) S' -> programa .
+
+
+
+state 2
+
+    (1) programa -> listaSentencias .
+    (3) listaSentencias -> listaSentencias . sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    $end            reduce using rule 1 (programa -> listaSentencias .)
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    sentencia                      shift and go to state 8
+
+state 3
+
+    (2) listaSentencias -> sentencia .
+
+    IMP             reduce using rule 2 (listaSentencias -> sentencia .)
+    ID              reduce using rule 2 (listaSentencias -> sentencia .)
+    FOR             reduce using rule 2 (listaSentencias -> sentencia .)
+    IF              reduce using rule 2 (listaSentencias -> sentencia .)
+    $end            reduce using rule 2 (listaSentencias -> sentencia .)
+    DLLAVE          reduce using rule 2 (listaSentencias -> sentencia .)
+
+
+state 4
+
+    (4) sentencia -> IMP . IPARENT expresion DPARENT
+
+    IPARENT         shift and go to state 9
+
+
+state 5
+
+    (5) sentencia -> ID . ASIGNAR expresion
+
+    ASIGNAR         shift and go to state 10
+
+
+state 6
+
+    (6) sentencia -> FOR . sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    sentencia                      shift and go to state 11
+
+state 7
+
+    (7) sentencia -> IF . condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+    (15) condicion -> . expresion relacion expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    ASIGNAR         reduce using rule 33 (empty -> .)
+    NOIGUAL         reduce using rule 33 (empty -> .)
+    MENORQ          reduce using rule 33 (empty -> .)
+    MAYORQ          reduce using rule 33 (empty -> .)
+    MENORIGUALQ     reduce using rule 33 (empty -> .)
+    MAYORIGUALQ     reduce using rule 33 (empty -> .)
+    IGUAL           reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+
+    condicion                      shift and go to state 12
+    expresion                      shift and go to state 13
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 8
+
+    (3) listaSentencias -> listaSentencias sentencia .
+
+    IMP             reduce using rule 3 (listaSentencias -> listaSentencias sentencia .)
+    ID              reduce using rule 3 (listaSentencias -> listaSentencias sentencia .)
+    FOR             reduce using rule 3 (listaSentencias -> listaSentencias sentencia .)
+    IF              reduce using rule 3 (listaSentencias -> listaSentencias sentencia .)
+    $end            reduce using rule 3 (listaSentencias -> listaSentencias sentencia .)
+    DLLAVE          reduce using rule 3 (listaSentencias -> listaSentencias sentencia .)
+
+
+state 9
+
+    (4) sentencia -> IMP IPARENT . expresion DPARENT
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 24
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 10
+
+    (5) sentencia -> ID ASIGNAR . expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    IMP             reduce using rule 33 (empty -> .)
+    FOR             reduce using rule 33 (empty -> .)
+    IF              reduce using rule 33 (empty -> .)
+    $end            reduce using rule 33 (empty -> .)
+    TO              reduce using rule 33 (empty -> .)
+    DLLAVE          reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+  ! ID              [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 25
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 11
+
+    (6) sentencia -> FOR sentencia . TO expresion THEN ILLAVE listaSentencias DLLAVE
+
+    TO              shift and go to state 26
+
+
+state 12
+
+    (7) sentencia -> IF condicion . THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    THEN            shift and go to state 27
+
+
+state 13
+
+    (15) condicion -> expresion . relacion expresion
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+    (16) relacion -> . ASIGNAR
+    (17) relacion -> . NOIGUAL
+    (18) relacion -> . MENORQ
+    (19) relacion -> . MAYORQ
+    (20) relacion -> . MENORIGUALQ
+    (21) relacion -> . MAYORIGUALQ
+    (22) relacion -> . IGUAL
+
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+    ASIGNAR         shift and go to state 33
+    NOIGUAL         shift and go to state 34
+    MENORQ          shift and go to state 35
+    MAYORQ          shift and go to state 36
+    MENORIGUALQ     shift and go to state 37
+    MAYORIGUALQ     shift and go to state 38
+    IGUAL           shift and go to state 39
+
+    relacion                       shift and go to state 28
+
+state 14
+
+    (8) expresion -> term .
+    (13) expresion -> term . concatenar term
+    (14) concatenar -> . CONCAT
+
+    SUMA            reduce using rule 8 (expresion -> term .)
+    RESTA           reduce using rule 8 (expresion -> term .)
+    MULTIPLICADO    reduce using rule 8 (expresion -> term .)
+    DIVIDIDO        reduce using rule 8 (expresion -> term .)
+    ASIGNAR         reduce using rule 8 (expresion -> term .)
+    NOIGUAL         reduce using rule 8 (expresion -> term .)
+    MENORQ          reduce using rule 8 (expresion -> term .)
+    MAYORQ          reduce using rule 8 (expresion -> term .)
+    MENORIGUALQ     reduce using rule 8 (expresion -> term .)
+    MAYORIGUALQ     reduce using rule 8 (expresion -> term .)
+    IGUAL           reduce using rule 8 (expresion -> term .)
+    DPARENT         reduce using rule 8 (expresion -> term .)
+    IMP             reduce using rule 8 (expresion -> term .)
+    ID              reduce using rule 8 (expresion -> term .)
+    FOR             reduce using rule 8 (expresion -> term .)
+    IF              reduce using rule 8 (expresion -> term .)
+    $end            reduce using rule 8 (expresion -> term .)
+    TO              reduce using rule 8 (expresion -> term .)
+    DLLAVE          reduce using rule 8 (expresion -> term .)
+    DCOR            reduce using rule 8 (expresion -> term .)
+    THEN            reduce using rule 8 (expresion -> term .)
+    CONCAT          shift and go to state 41
+
+    concatenar                     shift and go to state 40
+
+state 15
+
+    (27) factor -> RESTA . ENTERO
+    (28) factor -> RESTA . DECIMAL
+
+    ENTERO          shift and go to state 42
+    DECIMAL         shift and go to state 43
+
+
+state 16
+
+    (23) term -> factor .
+
+    CONCAT          reduce using rule 23 (term -> factor .)
+    SUMA            reduce using rule 23 (term -> factor .)
+    RESTA           reduce using rule 23 (term -> factor .)
+    MULTIPLICADO    reduce using rule 23 (term -> factor .)
+    DIVIDIDO        reduce using rule 23 (term -> factor .)
+    ASIGNAR         reduce using rule 23 (term -> factor .)
+    NOIGUAL         reduce using rule 23 (term -> factor .)
+    MENORQ          reduce using rule 23 (term -> factor .)
+    MAYORQ          reduce using rule 23 (term -> factor .)
+    MENORIGUALQ     reduce using rule 23 (term -> factor .)
+    MAYORIGUALQ     reduce using rule 23 (term -> factor .)
+    IGUAL           reduce using rule 23 (term -> factor .)
+    DPARENT         reduce using rule 23 (term -> factor .)
+    IMP             reduce using rule 23 (term -> factor .)
+    ID              reduce using rule 23 (term -> factor .)
+    FOR             reduce using rule 23 (term -> factor .)
+    IF              reduce using rule 23 (term -> factor .)
+    $end            reduce using rule 23 (term -> factor .)
+    TO              reduce using rule 23 (term -> factor .)
+    DLLAVE          reduce using rule 23 (term -> factor .)
+    DCOR            reduce using rule 23 (term -> factor .)
+    THEN            reduce using rule 23 (term -> factor .)
+
+
+state 17
+
+    (24) term -> IPARENT . expresion DPARENT
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 44
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 18
+
+    (25) term -> ICOR . expresion DCOR
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    DCOR            reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 45
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 19
+
+    (26) factor -> ID .
+
+    CONCAT          reduce using rule 26 (factor -> ID .)
+    SUMA            reduce using rule 26 (factor -> ID .)
+    RESTA           reduce using rule 26 (factor -> ID .)
+    MULTIPLICADO    reduce using rule 26 (factor -> ID .)
+    DIVIDIDO        reduce using rule 26 (factor -> ID .)
+    ASIGNAR         reduce using rule 26 (factor -> ID .)
+    NOIGUAL         reduce using rule 26 (factor -> ID .)
+    MENORQ          reduce using rule 26 (factor -> ID .)
+    MAYORQ          reduce using rule 26 (factor -> ID .)
+    MENORIGUALQ     reduce using rule 26 (factor -> ID .)
+    MAYORIGUALQ     reduce using rule 26 (factor -> ID .)
+    IGUAL           reduce using rule 26 (factor -> ID .)
+    DPARENT         reduce using rule 26 (factor -> ID .)
+    IMP             reduce using rule 26 (factor -> ID .)
+    ID              reduce using rule 26 (factor -> ID .)
+    FOR             reduce using rule 26 (factor -> ID .)
+    IF              reduce using rule 26 (factor -> ID .)
+    $end            reduce using rule 26 (factor -> ID .)
+    TO              reduce using rule 26 (factor -> ID .)
+    DLLAVE          reduce using rule 26 (factor -> ID .)
+    DCOR            reduce using rule 26 (factor -> ID .)
+    THEN            reduce using rule 26 (factor -> ID .)
+
+
+state 20
+
+    (29) factor -> ENTERO .
+
+    CONCAT          reduce using rule 29 (factor -> ENTERO .)
+    SUMA            reduce using rule 29 (factor -> ENTERO .)
+    RESTA           reduce using rule 29 (factor -> ENTERO .)
+    MULTIPLICADO    reduce using rule 29 (factor -> ENTERO .)
+    DIVIDIDO        reduce using rule 29 (factor -> ENTERO .)
+    ASIGNAR         reduce using rule 29 (factor -> ENTERO .)
+    NOIGUAL         reduce using rule 29 (factor -> ENTERO .)
+    MENORQ          reduce using rule 29 (factor -> ENTERO .)
+    MAYORQ          reduce using rule 29 (factor -> ENTERO .)
+    MENORIGUALQ     reduce using rule 29 (factor -> ENTERO .)
+    MAYORIGUALQ     reduce using rule 29 (factor -> ENTERO .)
+    IGUAL           reduce using rule 29 (factor -> ENTERO .)
+    DPARENT         reduce using rule 29 (factor -> ENTERO .)
+    IMP             reduce using rule 29 (factor -> ENTERO .)
+    ID              reduce using rule 29 (factor -> ENTERO .)
+    FOR             reduce using rule 29 (factor -> ENTERO .)
+    IF              reduce using rule 29 (factor -> ENTERO .)
+    $end            reduce using rule 29 (factor -> ENTERO .)
+    TO              reduce using rule 29 (factor -> ENTERO .)
+    DLLAVE          reduce using rule 29 (factor -> ENTERO .)
+    DCOR            reduce using rule 29 (factor -> ENTERO .)
+    THEN            reduce using rule 29 (factor -> ENTERO .)
+
+
+state 21
+
+    (30) factor -> DECIMAL .
+
+    CONCAT          reduce using rule 30 (factor -> DECIMAL .)
+    SUMA            reduce using rule 30 (factor -> DECIMAL .)
+    RESTA           reduce using rule 30 (factor -> DECIMAL .)
+    MULTIPLICADO    reduce using rule 30 (factor -> DECIMAL .)
+    DIVIDIDO        reduce using rule 30 (factor -> DECIMAL .)
+    ASIGNAR         reduce using rule 30 (factor -> DECIMAL .)
+    NOIGUAL         reduce using rule 30 (factor -> DECIMAL .)
+    MENORQ          reduce using rule 30 (factor -> DECIMAL .)
+    MAYORQ          reduce using rule 30 (factor -> DECIMAL .)
+    MENORIGUALQ     reduce using rule 30 (factor -> DECIMAL .)
+    MAYORIGUALQ     reduce using rule 30 (factor -> DECIMAL .)
+    IGUAL           reduce using rule 30 (factor -> DECIMAL .)
+    DPARENT         reduce using rule 30 (factor -> DECIMAL .)
+    IMP             reduce using rule 30 (factor -> DECIMAL .)
+    ID              reduce using rule 30 (factor -> DECIMAL .)
+    FOR             reduce using rule 30 (factor -> DECIMAL .)
+    IF              reduce using rule 30 (factor -> DECIMAL .)
+    $end            reduce using rule 30 (factor -> DECIMAL .)
+    TO              reduce using rule 30 (factor -> DECIMAL .)
+    DLLAVE          reduce using rule 30 (factor -> DECIMAL .)
+    DCOR            reduce using rule 30 (factor -> DECIMAL .)
+    THEN            reduce using rule 30 (factor -> DECIMAL .)
+
+
+state 22
+
+    (31) factor -> STR .
+
+    CONCAT          reduce using rule 31 (factor -> STR .)
+    SUMA            reduce using rule 31 (factor -> STR .)
+    RESTA           reduce using rule 31 (factor -> STR .)
+    MULTIPLICADO    reduce using rule 31 (factor -> STR .)
+    DIVIDIDO        reduce using rule 31 (factor -> STR .)
+    ASIGNAR         reduce using rule 31 (factor -> STR .)
+    NOIGUAL         reduce using rule 31 (factor -> STR .)
+    MENORQ          reduce using rule 31 (factor -> STR .)
+    MAYORQ          reduce using rule 31 (factor -> STR .)
+    MENORIGUALQ     reduce using rule 31 (factor -> STR .)
+    MAYORIGUALQ     reduce using rule 31 (factor -> STR .)
+    IGUAL           reduce using rule 31 (factor -> STR .)
+    DPARENT         reduce using rule 31 (factor -> STR .)
+    IMP             reduce using rule 31 (factor -> STR .)
+    ID              reduce using rule 31 (factor -> STR .)
+    FOR             reduce using rule 31 (factor -> STR .)
+    IF              reduce using rule 31 (factor -> STR .)
+    $end            reduce using rule 31 (factor -> STR .)
+    TO              reduce using rule 31 (factor -> STR .)
+    DLLAVE          reduce using rule 31 (factor -> STR .)
+    DCOR            reduce using rule 31 (factor -> STR .)
+    THEN            reduce using rule 31 (factor -> STR .)
+
+
+state 23
+
+    (32) factor -> empty .
+
+    CONCAT          reduce using rule 32 (factor -> empty .)
+    SUMA            reduce using rule 32 (factor -> empty .)
+    RESTA           reduce using rule 32 (factor -> empty .)
+    MULTIPLICADO    reduce using rule 32 (factor -> empty .)
+    DIVIDIDO        reduce using rule 32 (factor -> empty .)
+    ASIGNAR         reduce using rule 32 (factor -> empty .)
+    NOIGUAL         reduce using rule 32 (factor -> empty .)
+    MENORQ          reduce using rule 32 (factor -> empty .)
+    MAYORQ          reduce using rule 32 (factor -> empty .)
+    MENORIGUALQ     reduce using rule 32 (factor -> empty .)
+    MAYORIGUALQ     reduce using rule 32 (factor -> empty .)
+    IGUAL           reduce using rule 32 (factor -> empty .)
+    DPARENT         reduce using rule 32 (factor -> empty .)
+    IMP             reduce using rule 32 (factor -> empty .)
+    ID              reduce using rule 32 (factor -> empty .)
+    FOR             reduce using rule 32 (factor -> empty .)
+    IF              reduce using rule 32 (factor -> empty .)
+    $end            reduce using rule 32 (factor -> empty .)
+    TO              reduce using rule 32 (factor -> empty .)
+    DLLAVE          reduce using rule 32 (factor -> empty .)
+    DCOR            reduce using rule 32 (factor -> empty .)
+    THEN            reduce using rule 32 (factor -> empty .)
+
+
+state 24
+
+    (4) sentencia -> IMP IPARENT expresion . DPARENT
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    DPARENT         shift and go to state 46
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+
+state 25
+
+    (5) sentencia -> ID ASIGNAR expresion .
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    IMP             reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    ID              reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    FOR             reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    IF              reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    $end            reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    TO              reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    DLLAVE          reduce using rule 5 (sentencia -> ID ASIGNAR expresion .)
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+
+state 26
+
+    (6) sentencia -> FOR sentencia TO . expresion THEN ILLAVE listaSentencias DLLAVE
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 47
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 27
+
+    (7) sentencia -> IF condicion THEN . ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    ILLAVE          shift and go to state 48
+
+
+state 28
+
+    (15) condicion -> expresion relacion . expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 49
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 29
+
+    (9) expresion -> expresion SUMA . expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    ASIGNAR         reduce using rule 33 (empty -> .)
+    NOIGUAL         reduce using rule 33 (empty -> .)
+    MENORQ          reduce using rule 33 (empty -> .)
+    MAYORQ          reduce using rule 33 (empty -> .)
+    MENORIGUALQ     reduce using rule 33 (empty -> .)
+    MAYORIGUALQ     reduce using rule 33 (empty -> .)
+    IGUAL           reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    IMP             reduce using rule 33 (empty -> .)
+    FOR             reduce using rule 33 (empty -> .)
+    IF              reduce using rule 33 (empty -> .)
+    $end            reduce using rule 33 (empty -> .)
+    TO              reduce using rule 33 (empty -> .)
+    DLLAVE          reduce using rule 33 (empty -> .)
+    DCOR            reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+  ! ID              [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 50
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 30
+
+    (10) expresion -> expresion RESTA . expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    ASIGNAR         reduce using rule 33 (empty -> .)
+    NOIGUAL         reduce using rule 33 (empty -> .)
+    MENORQ          reduce using rule 33 (empty -> .)
+    MAYORQ          reduce using rule 33 (empty -> .)
+    MENORIGUALQ     reduce using rule 33 (empty -> .)
+    MAYORIGUALQ     reduce using rule 33 (empty -> .)
+    IGUAL           reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    IMP             reduce using rule 33 (empty -> .)
+    FOR             reduce using rule 33 (empty -> .)
+    IF              reduce using rule 33 (empty -> .)
+    $end            reduce using rule 33 (empty -> .)
+    TO              reduce using rule 33 (empty -> .)
+    DLLAVE          reduce using rule 33 (empty -> .)
+    DCOR            reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+  ! ID              [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 51
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 31
+
+    (11) expresion -> expresion MULTIPLICADO . expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    ASIGNAR         reduce using rule 33 (empty -> .)
+    NOIGUAL         reduce using rule 33 (empty -> .)
+    MENORQ          reduce using rule 33 (empty -> .)
+    MAYORQ          reduce using rule 33 (empty -> .)
+    MENORIGUALQ     reduce using rule 33 (empty -> .)
+    MAYORIGUALQ     reduce using rule 33 (empty -> .)
+    IGUAL           reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    IMP             reduce using rule 33 (empty -> .)
+    FOR             reduce using rule 33 (empty -> .)
+    IF              reduce using rule 33 (empty -> .)
+    $end            reduce using rule 33 (empty -> .)
+    TO              reduce using rule 33 (empty -> .)
+    DLLAVE          reduce using rule 33 (empty -> .)
+    DCOR            reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+  ! ID              [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 52
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 32
+
+    (12) expresion -> expresion DIVIDIDO . expresion
+    (8) expresion -> . term
+    (9) expresion -> . expresion SUMA expresion
+    (10) expresion -> . expresion RESTA expresion
+    (11) expresion -> . expresion MULTIPLICADO expresion
+    (12) expresion -> . expresion DIVIDIDO expresion
+    (13) expresion -> . term concatenar term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    CONCAT          reduce using rule 33 (empty -> .)
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    ASIGNAR         reduce using rule 33 (empty -> .)
+    NOIGUAL         reduce using rule 33 (empty -> .)
+    MENORQ          reduce using rule 33 (empty -> .)
+    MAYORQ          reduce using rule 33 (empty -> .)
+    MENORIGUALQ     reduce using rule 33 (empty -> .)
+    MAYORIGUALQ     reduce using rule 33 (empty -> .)
+    IGUAL           reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    IMP             reduce using rule 33 (empty -> .)
+    FOR             reduce using rule 33 (empty -> .)
+    IF              reduce using rule 33 (empty -> .)
+    $end            reduce using rule 33 (empty -> .)
+    TO              reduce using rule 33 (empty -> .)
+    DLLAVE          reduce using rule 33 (empty -> .)
+    DCOR            reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+  ! ID              [ reduce using rule 33 (empty -> .) ]
+
+    expresion                      shift and go to state 53
+    term                           shift and go to state 14
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 33
+
+    (16) relacion -> ASIGNAR .
+
+    IPARENT         reduce using rule 16 (relacion -> ASIGNAR .)
+    ICOR            reduce using rule 16 (relacion -> ASIGNAR .)
+    ID              reduce using rule 16 (relacion -> ASIGNAR .)
+    RESTA           reduce using rule 16 (relacion -> ASIGNAR .)
+    ENTERO          reduce using rule 16 (relacion -> ASIGNAR .)
+    DECIMAL         reduce using rule 16 (relacion -> ASIGNAR .)
+    STR             reduce using rule 16 (relacion -> ASIGNAR .)
+    SUMA            reduce using rule 16 (relacion -> ASIGNAR .)
+    MULTIPLICADO    reduce using rule 16 (relacion -> ASIGNAR .)
+    DIVIDIDO        reduce using rule 16 (relacion -> ASIGNAR .)
+    CONCAT          reduce using rule 16 (relacion -> ASIGNAR .)
+    THEN            reduce using rule 16 (relacion -> ASIGNAR .)
+
+
+state 34
+
+    (17) relacion -> NOIGUAL .
+
+    IPARENT         reduce using rule 17 (relacion -> NOIGUAL .)
+    ICOR            reduce using rule 17 (relacion -> NOIGUAL .)
+    ID              reduce using rule 17 (relacion -> NOIGUAL .)
+    RESTA           reduce using rule 17 (relacion -> NOIGUAL .)
+    ENTERO          reduce using rule 17 (relacion -> NOIGUAL .)
+    DECIMAL         reduce using rule 17 (relacion -> NOIGUAL .)
+    STR             reduce using rule 17 (relacion -> NOIGUAL .)
+    SUMA            reduce using rule 17 (relacion -> NOIGUAL .)
+    MULTIPLICADO    reduce using rule 17 (relacion -> NOIGUAL .)
+    DIVIDIDO        reduce using rule 17 (relacion -> NOIGUAL .)
+    CONCAT          reduce using rule 17 (relacion -> NOIGUAL .)
+    THEN            reduce using rule 17 (relacion -> NOIGUAL .)
+
+
+state 35
+
+    (18) relacion -> MENORQ .
+
+    IPARENT         reduce using rule 18 (relacion -> MENORQ .)
+    ICOR            reduce using rule 18 (relacion -> MENORQ .)
+    ID              reduce using rule 18 (relacion -> MENORQ .)
+    RESTA           reduce using rule 18 (relacion -> MENORQ .)
+    ENTERO          reduce using rule 18 (relacion -> MENORQ .)
+    DECIMAL         reduce using rule 18 (relacion -> MENORQ .)
+    STR             reduce using rule 18 (relacion -> MENORQ .)
+    SUMA            reduce using rule 18 (relacion -> MENORQ .)
+    MULTIPLICADO    reduce using rule 18 (relacion -> MENORQ .)
+    DIVIDIDO        reduce using rule 18 (relacion -> MENORQ .)
+    CONCAT          reduce using rule 18 (relacion -> MENORQ .)
+    THEN            reduce using rule 18 (relacion -> MENORQ .)
+
+
+state 36
+
+    (19) relacion -> MAYORQ .
+
+    IPARENT         reduce using rule 19 (relacion -> MAYORQ .)
+    ICOR            reduce using rule 19 (relacion -> MAYORQ .)
+    ID              reduce using rule 19 (relacion -> MAYORQ .)
+    RESTA           reduce using rule 19 (relacion -> MAYORQ .)
+    ENTERO          reduce using rule 19 (relacion -> MAYORQ .)
+    DECIMAL         reduce using rule 19 (relacion -> MAYORQ .)
+    STR             reduce using rule 19 (relacion -> MAYORQ .)
+    SUMA            reduce using rule 19 (relacion -> MAYORQ .)
+    MULTIPLICADO    reduce using rule 19 (relacion -> MAYORQ .)
+    DIVIDIDO        reduce using rule 19 (relacion -> MAYORQ .)
+    CONCAT          reduce using rule 19 (relacion -> MAYORQ .)
+    THEN            reduce using rule 19 (relacion -> MAYORQ .)
+
+
+state 37
+
+    (20) relacion -> MENORIGUALQ .
+
+    IPARENT         reduce using rule 20 (relacion -> MENORIGUALQ .)
+    ICOR            reduce using rule 20 (relacion -> MENORIGUALQ .)
+    ID              reduce using rule 20 (relacion -> MENORIGUALQ .)
+    RESTA           reduce using rule 20 (relacion -> MENORIGUALQ .)
+    ENTERO          reduce using rule 20 (relacion -> MENORIGUALQ .)
+    DECIMAL         reduce using rule 20 (relacion -> MENORIGUALQ .)
+    STR             reduce using rule 20 (relacion -> MENORIGUALQ .)
+    SUMA            reduce using rule 20 (relacion -> MENORIGUALQ .)
+    MULTIPLICADO    reduce using rule 20 (relacion -> MENORIGUALQ .)
+    DIVIDIDO        reduce using rule 20 (relacion -> MENORIGUALQ .)
+    CONCAT          reduce using rule 20 (relacion -> MENORIGUALQ .)
+    THEN            reduce using rule 20 (relacion -> MENORIGUALQ .)
+
+
+state 38
+
+    (21) relacion -> MAYORIGUALQ .
+
+    IPARENT         reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    ICOR            reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    ID              reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    RESTA           reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    ENTERO          reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    DECIMAL         reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    STR             reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    SUMA            reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    MULTIPLICADO    reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    DIVIDIDO        reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    CONCAT          reduce using rule 21 (relacion -> MAYORIGUALQ .)
+    THEN            reduce using rule 21 (relacion -> MAYORIGUALQ .)
+
+
+state 39
+
+    (22) relacion -> IGUAL .
+
+    IPARENT         reduce using rule 22 (relacion -> IGUAL .)
+    ICOR            reduce using rule 22 (relacion -> IGUAL .)
+    ID              reduce using rule 22 (relacion -> IGUAL .)
+    RESTA           reduce using rule 22 (relacion -> IGUAL .)
+    ENTERO          reduce using rule 22 (relacion -> IGUAL .)
+    DECIMAL         reduce using rule 22 (relacion -> IGUAL .)
+    STR             reduce using rule 22 (relacion -> IGUAL .)
+    SUMA            reduce using rule 22 (relacion -> IGUAL .)
+    MULTIPLICADO    reduce using rule 22 (relacion -> IGUAL .)
+    DIVIDIDO        reduce using rule 22 (relacion -> IGUAL .)
+    CONCAT          reduce using rule 22 (relacion -> IGUAL .)
+    THEN            reduce using rule 22 (relacion -> IGUAL .)
+
+
+state 40
+
+    (13) expresion -> term concatenar . term
+    (23) term -> . factor
+    (24) term -> . IPARENT expresion DPARENT
+    (25) term -> . ICOR expresion DCOR
+    (26) factor -> . ID
+    (27) factor -> . RESTA ENTERO
+    (28) factor -> . RESTA DECIMAL
+    (29) factor -> . ENTERO
+    (30) factor -> . DECIMAL
+    (31) factor -> . STR
+    (32) factor -> . empty
+    (33) empty -> .
+
+  ! shift/reduce conflict for RESTA resolved as shift
+  ! shift/reduce conflict for ID resolved as shift
+    IPARENT         shift and go to state 17
+    ICOR            shift and go to state 18
+    ID              shift and go to state 19
+    RESTA           shift and go to state 15
+    ENTERO          shift and go to state 20
+    DECIMAL         shift and go to state 21
+    STR             shift and go to state 22
+    SUMA            reduce using rule 33 (empty -> .)
+    MULTIPLICADO    reduce using rule 33 (empty -> .)
+    DIVIDIDO        reduce using rule 33 (empty -> .)
+    ASIGNAR         reduce using rule 33 (empty -> .)
+    NOIGUAL         reduce using rule 33 (empty -> .)
+    MENORQ          reduce using rule 33 (empty -> .)
+    MAYORQ          reduce using rule 33 (empty -> .)
+    MENORIGUALQ     reduce using rule 33 (empty -> .)
+    MAYORIGUALQ     reduce using rule 33 (empty -> .)
+    IGUAL           reduce using rule 33 (empty -> .)
+    DPARENT         reduce using rule 33 (empty -> .)
+    IMP             reduce using rule 33 (empty -> .)
+    FOR             reduce using rule 33 (empty -> .)
+    IF              reduce using rule 33 (empty -> .)
+    $end            reduce using rule 33 (empty -> .)
+    TO              reduce using rule 33 (empty -> .)
+    DLLAVE          reduce using rule 33 (empty -> .)
+    DCOR            reduce using rule 33 (empty -> .)
+    THEN            reduce using rule 33 (empty -> .)
+
+  ! RESTA           [ reduce using rule 33 (empty -> .) ]
+  ! ID              [ reduce using rule 33 (empty -> .) ]
+
+    term                           shift and go to state 54
+    factor                         shift and go to state 16
+    empty                          shift and go to state 23
+
+state 41
+
+    (14) concatenar -> CONCAT .
+
+    IPARENT         reduce using rule 14 (concatenar -> CONCAT .)
+    ICOR            reduce using rule 14 (concatenar -> CONCAT .)
+    ID              reduce using rule 14 (concatenar -> CONCAT .)
+    RESTA           reduce using rule 14 (concatenar -> CONCAT .)
+    ENTERO          reduce using rule 14 (concatenar -> CONCAT .)
+    DECIMAL         reduce using rule 14 (concatenar -> CONCAT .)
+    STR             reduce using rule 14 (concatenar -> CONCAT .)
+    SUMA            reduce using rule 14 (concatenar -> CONCAT .)
+    MULTIPLICADO    reduce using rule 14 (concatenar -> CONCAT .)
+    DIVIDIDO        reduce using rule 14 (concatenar -> CONCAT .)
+    ASIGNAR         reduce using rule 14 (concatenar -> CONCAT .)
+    NOIGUAL         reduce using rule 14 (concatenar -> CONCAT .)
+    MENORQ          reduce using rule 14 (concatenar -> CONCAT .)
+    MAYORQ          reduce using rule 14 (concatenar -> CONCAT .)
+    MENORIGUALQ     reduce using rule 14 (concatenar -> CONCAT .)
+    MAYORIGUALQ     reduce using rule 14 (concatenar -> CONCAT .)
+    IGUAL           reduce using rule 14 (concatenar -> CONCAT .)
+    DPARENT         reduce using rule 14 (concatenar -> CONCAT .)
+    IMP             reduce using rule 14 (concatenar -> CONCAT .)
+    FOR             reduce using rule 14 (concatenar -> CONCAT .)
+    IF              reduce using rule 14 (concatenar -> CONCAT .)
+    $end            reduce using rule 14 (concatenar -> CONCAT .)
+    TO              reduce using rule 14 (concatenar -> CONCAT .)
+    DLLAVE          reduce using rule 14 (concatenar -> CONCAT .)
+    DCOR            reduce using rule 14 (concatenar -> CONCAT .)
+    THEN            reduce using rule 14 (concatenar -> CONCAT .)
+
+
+state 42
+
+    (27) factor -> RESTA ENTERO .
+
+    CONCAT          reduce using rule 27 (factor -> RESTA ENTERO .)
+    SUMA            reduce using rule 27 (factor -> RESTA ENTERO .)
+    RESTA           reduce using rule 27 (factor -> RESTA ENTERO .)
+    MULTIPLICADO    reduce using rule 27 (factor -> RESTA ENTERO .)
+    DIVIDIDO        reduce using rule 27 (factor -> RESTA ENTERO .)
+    ASIGNAR         reduce using rule 27 (factor -> RESTA ENTERO .)
+    NOIGUAL         reduce using rule 27 (factor -> RESTA ENTERO .)
+    MENORQ          reduce using rule 27 (factor -> RESTA ENTERO .)
+    MAYORQ          reduce using rule 27 (factor -> RESTA ENTERO .)
+    MENORIGUALQ     reduce using rule 27 (factor -> RESTA ENTERO .)
+    MAYORIGUALQ     reduce using rule 27 (factor -> RESTA ENTERO .)
+    IGUAL           reduce using rule 27 (factor -> RESTA ENTERO .)
+    DPARENT         reduce using rule 27 (factor -> RESTA ENTERO .)
+    IMP             reduce using rule 27 (factor -> RESTA ENTERO .)
+    ID              reduce using rule 27 (factor -> RESTA ENTERO .)
+    FOR             reduce using rule 27 (factor -> RESTA ENTERO .)
+    IF              reduce using rule 27 (factor -> RESTA ENTERO .)
+    $end            reduce using rule 27 (factor -> RESTA ENTERO .)
+    TO              reduce using rule 27 (factor -> RESTA ENTERO .)
+    DLLAVE          reduce using rule 27 (factor -> RESTA ENTERO .)
+    DCOR            reduce using rule 27 (factor -> RESTA ENTERO .)
+    THEN            reduce using rule 27 (factor -> RESTA ENTERO .)
+
+
+state 43
+
+    (28) factor -> RESTA DECIMAL .
+
+    CONCAT          reduce using rule 28 (factor -> RESTA DECIMAL .)
+    SUMA            reduce using rule 28 (factor -> RESTA DECIMAL .)
+    RESTA           reduce using rule 28 (factor -> RESTA DECIMAL .)
+    MULTIPLICADO    reduce using rule 28 (factor -> RESTA DECIMAL .)
+    DIVIDIDO        reduce using rule 28 (factor -> RESTA DECIMAL .)
+    ASIGNAR         reduce using rule 28 (factor -> RESTA DECIMAL .)
+    NOIGUAL         reduce using rule 28 (factor -> RESTA DECIMAL .)
+    MENORQ          reduce using rule 28 (factor -> RESTA DECIMAL .)
+    MAYORQ          reduce using rule 28 (factor -> RESTA DECIMAL .)
+    MENORIGUALQ     reduce using rule 28 (factor -> RESTA DECIMAL .)
+    MAYORIGUALQ     reduce using rule 28 (factor -> RESTA DECIMAL .)
+    IGUAL           reduce using rule 28 (factor -> RESTA DECIMAL .)
+    DPARENT         reduce using rule 28 (factor -> RESTA DECIMAL .)
+    IMP             reduce using rule 28 (factor -> RESTA DECIMAL .)
+    ID              reduce using rule 28 (factor -> RESTA DECIMAL .)
+    FOR             reduce using rule 28 (factor -> RESTA DECIMAL .)
+    IF              reduce using rule 28 (factor -> RESTA DECIMAL .)
+    $end            reduce using rule 28 (factor -> RESTA DECIMAL .)
+    TO              reduce using rule 28 (factor -> RESTA DECIMAL .)
+    DLLAVE          reduce using rule 28 (factor -> RESTA DECIMAL .)
+    DCOR            reduce using rule 28 (factor -> RESTA DECIMAL .)
+    THEN            reduce using rule 28 (factor -> RESTA DECIMAL .)
+
+
+state 44
+
+    (24) term -> IPARENT expresion . DPARENT
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    DPARENT         shift and go to state 55
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+
+state 45
+
+    (25) term -> ICOR expresion . DCOR
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    DCOR            shift and go to state 56
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+
+state 46
+
+    (4) sentencia -> IMP IPARENT expresion DPARENT .
+
+    IMP             reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+    ID              reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+    FOR             reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+    IF              reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+    $end            reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+    TO              reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+    DLLAVE          reduce using rule 4 (sentencia -> IMP IPARENT expresion DPARENT .)
+
+
+state 47
+
+    (6) sentencia -> FOR sentencia TO expresion . THEN ILLAVE listaSentencias DLLAVE
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    THEN            shift and go to state 57
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+
+state 48
+
+    (7) sentencia -> IF condicion THEN ILLAVE . listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+    (2) listaSentencias -> . sentencia
+    (3) listaSentencias -> . listaSentencias sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    listaSentencias                shift and go to state 58
+    sentencia                      shift and go to state 3
+
+state 49
+
+    (15) condicion -> expresion relacion expresion .
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    THEN            reduce using rule 15 (condicion -> expresion relacion expresion .)
+    SUMA            shift and go to state 29
+    RESTA           shift and go to state 30
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+
+state 50
+
+    (9) expresion -> expresion SUMA expresion .
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    SUMA            reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    RESTA           reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    ASIGNAR         reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    NOIGUAL         reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    MENORQ          reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    MAYORQ          reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    MENORIGUALQ     reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    MAYORIGUALQ     reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    IGUAL           reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    DPARENT         reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    IMP             reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    ID              reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    FOR             reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    IF              reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    $end            reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    TO              reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    DLLAVE          reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    DCOR            reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    THEN            reduce using rule 9 (expresion -> expresion SUMA expresion .)
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+  ! MULTIPLICADO    [ reduce using rule 9 (expresion -> expresion SUMA expresion .) ]
+  ! DIVIDIDO        [ reduce using rule 9 (expresion -> expresion SUMA expresion .) ]
+  ! SUMA            [ shift and go to state 29 ]
+  ! RESTA           [ shift and go to state 30 ]
+
+
+state 51
+
+    (10) expresion -> expresion RESTA expresion .
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    SUMA            reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    RESTA           reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    ASIGNAR         reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    NOIGUAL         reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    MENORQ          reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    MAYORQ          reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    MENORIGUALQ     reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    MAYORIGUALQ     reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    IGUAL           reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    DPARENT         reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    IMP             reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    ID              reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    FOR             reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    IF              reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    $end            reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    TO              reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    DLLAVE          reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    DCOR            reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    THEN            reduce using rule 10 (expresion -> expresion RESTA expresion .)
+    MULTIPLICADO    shift and go to state 31
+    DIVIDIDO        shift and go to state 32
+
+  ! MULTIPLICADO    [ reduce using rule 10 (expresion -> expresion RESTA expresion .) ]
+  ! DIVIDIDO        [ reduce using rule 10 (expresion -> expresion RESTA expresion .) ]
+  ! SUMA            [ shift and go to state 29 ]
+  ! RESTA           [ shift and go to state 30 ]
+
+
+state 52
+
+    (11) expresion -> expresion MULTIPLICADO expresion .
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    SUMA            reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    RESTA           reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    MULTIPLICADO    reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    DIVIDIDO        reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    ASIGNAR         reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    NOIGUAL         reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    MENORQ          reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    MAYORQ          reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    MENORIGUALQ     reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    MAYORIGUALQ     reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    IGUAL           reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    DPARENT         reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    IMP             reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    ID              reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    FOR             reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    IF              reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    $end            reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    TO              reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    DLLAVE          reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    DCOR            reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+    THEN            reduce using rule 11 (expresion -> expresion MULTIPLICADO expresion .)
+
+  ! SUMA            [ shift and go to state 29 ]
+  ! RESTA           [ shift and go to state 30 ]
+  ! MULTIPLICADO    [ shift and go to state 31 ]
+  ! DIVIDIDO        [ shift and go to state 32 ]
+
+
+state 53
+
+    (12) expresion -> expresion DIVIDIDO expresion .
+    (9) expresion -> expresion . SUMA expresion
+    (10) expresion -> expresion . RESTA expresion
+    (11) expresion -> expresion . MULTIPLICADO expresion
+    (12) expresion -> expresion . DIVIDIDO expresion
+
+    SUMA            reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    RESTA           reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    MULTIPLICADO    reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    DIVIDIDO        reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    ASIGNAR         reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    NOIGUAL         reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    MENORQ          reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    MAYORQ          reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    MENORIGUALQ     reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    MAYORIGUALQ     reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    IGUAL           reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    DPARENT         reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    IMP             reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    ID              reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    FOR             reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    IF              reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    $end            reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    TO              reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    DLLAVE          reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    DCOR            reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+    THEN            reduce using rule 12 (expresion -> expresion DIVIDIDO expresion .)
+
+  ! SUMA            [ shift and go to state 29 ]
+  ! RESTA           [ shift and go to state 30 ]
+  ! MULTIPLICADO    [ shift and go to state 31 ]
+  ! DIVIDIDO        [ shift and go to state 32 ]
+
+
+state 54
+
+    (13) expresion -> term concatenar term .
+
+    SUMA            reduce using rule 13 (expresion -> term concatenar term .)
+    RESTA           reduce using rule 13 (expresion -> term concatenar term .)
+    MULTIPLICADO    reduce using rule 13 (expresion -> term concatenar term .)
+    DIVIDIDO        reduce using rule 13 (expresion -> term concatenar term .)
+    ASIGNAR         reduce using rule 13 (expresion -> term concatenar term .)
+    NOIGUAL         reduce using rule 13 (expresion -> term concatenar term .)
+    MENORQ          reduce using rule 13 (expresion -> term concatenar term .)
+    MAYORQ          reduce using rule 13 (expresion -> term concatenar term .)
+    MENORIGUALQ     reduce using rule 13 (expresion -> term concatenar term .)
+    MAYORIGUALQ     reduce using rule 13 (expresion -> term concatenar term .)
+    IGUAL           reduce using rule 13 (expresion -> term concatenar term .)
+    DPARENT         reduce using rule 13 (expresion -> term concatenar term .)
+    IMP             reduce using rule 13 (expresion -> term concatenar term .)
+    ID              reduce using rule 13 (expresion -> term concatenar term .)
+    FOR             reduce using rule 13 (expresion -> term concatenar term .)
+    IF              reduce using rule 13 (expresion -> term concatenar term .)
+    $end            reduce using rule 13 (expresion -> term concatenar term .)
+    TO              reduce using rule 13 (expresion -> term concatenar term .)
+    DLLAVE          reduce using rule 13 (expresion -> term concatenar term .)
+    DCOR            reduce using rule 13 (expresion -> term concatenar term .)
+    THEN            reduce using rule 13 (expresion -> term concatenar term .)
+
+
+state 55
+
+    (24) term -> IPARENT expresion DPARENT .
+
+    CONCAT          reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    SUMA            reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    RESTA           reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    MULTIPLICADO    reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    DIVIDIDO        reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    ASIGNAR         reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    NOIGUAL         reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    MENORQ          reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    MAYORQ          reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    MENORIGUALQ     reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    MAYORIGUALQ     reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    IGUAL           reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    DPARENT         reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    IMP             reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    ID              reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    FOR             reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    IF              reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    $end            reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    TO              reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    DLLAVE          reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    DCOR            reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+    THEN            reduce using rule 24 (term -> IPARENT expresion DPARENT .)
+
+
+state 56
+
+    (25) term -> ICOR expresion DCOR .
+
+    CONCAT          reduce using rule 25 (term -> ICOR expresion DCOR .)
+    SUMA            reduce using rule 25 (term -> ICOR expresion DCOR .)
+    RESTA           reduce using rule 25 (term -> ICOR expresion DCOR .)
+    MULTIPLICADO    reduce using rule 25 (term -> ICOR expresion DCOR .)
+    DIVIDIDO        reduce using rule 25 (term -> ICOR expresion DCOR .)
+    ASIGNAR         reduce using rule 25 (term -> ICOR expresion DCOR .)
+    NOIGUAL         reduce using rule 25 (term -> ICOR expresion DCOR .)
+    MENORQ          reduce using rule 25 (term -> ICOR expresion DCOR .)
+    MAYORQ          reduce using rule 25 (term -> ICOR expresion DCOR .)
+    MENORIGUALQ     reduce using rule 25 (term -> ICOR expresion DCOR .)
+    MAYORIGUALQ     reduce using rule 25 (term -> ICOR expresion DCOR .)
+    IGUAL           reduce using rule 25 (term -> ICOR expresion DCOR .)
+    DPARENT         reduce using rule 25 (term -> ICOR expresion DCOR .)
+    IMP             reduce using rule 25 (term -> ICOR expresion DCOR .)
+    ID              reduce using rule 25 (term -> ICOR expresion DCOR .)
+    FOR             reduce using rule 25 (term -> ICOR expresion DCOR .)
+    IF              reduce using rule 25 (term -> ICOR expresion DCOR .)
+    $end            reduce using rule 25 (term -> ICOR expresion DCOR .)
+    TO              reduce using rule 25 (term -> ICOR expresion DCOR .)
+    DLLAVE          reduce using rule 25 (term -> ICOR expresion DCOR .)
+    DCOR            reduce using rule 25 (term -> ICOR expresion DCOR .)
+    THEN            reduce using rule 25 (term -> ICOR expresion DCOR .)
+
+
+state 57
+
+    (6) sentencia -> FOR sentencia TO expresion THEN . ILLAVE listaSentencias DLLAVE
+
+    ILLAVE          shift and go to state 59
+
+
+state 58
+
+    (7) sentencia -> IF condicion THEN ILLAVE listaSentencias . DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+    (3) listaSentencias -> listaSentencias . sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    DLLAVE          shift and go to state 60
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    sentencia                      shift and go to state 8
+
+state 59
+
+    (6) sentencia -> FOR sentencia TO expresion THEN ILLAVE . listaSentencias DLLAVE
+    (2) listaSentencias -> . sentencia
+    (3) listaSentencias -> . listaSentencias sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    sentencia                      shift and go to state 3
+    listaSentencias                shift and go to state 61
+
+state 60
+
+    (7) sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE . ELSE ILLAVE listaSentencias DLLAVE
+
+    ELSE            shift and go to state 62
+
+
+state 61
+
+    (6) sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias . DLLAVE
+    (3) listaSentencias -> listaSentencias . sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    DLLAVE          shift and go to state 63
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    sentencia                      shift and go to state 8
+
+state 62
+
+    (7) sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE . ILLAVE listaSentencias DLLAVE
+
+    ILLAVE          shift and go to state 64
+
+
+state 63
+
+    (6) sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .
+
+    IMP             reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+    ID              reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+    FOR             reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+    IF              reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+    $end            reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+    TO              reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+    DLLAVE          reduce using rule 6 (sentencia -> FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE .)
+
+
+state 64
+
+    (7) sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE . listaSentencias DLLAVE
+    (2) listaSentencias -> . sentencia
+    (3) listaSentencias -> . listaSentencias sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    listaSentencias                shift and go to state 65
+    sentencia                      shift and go to state 3
+
+state 65
+
+    (7) sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias . DLLAVE
+    (3) listaSentencias -> listaSentencias . sentencia
+    (4) sentencia -> . IMP IPARENT expresion DPARENT
+    (5) sentencia -> . ID ASIGNAR expresion
+    (6) sentencia -> . FOR sentencia TO expresion THEN ILLAVE listaSentencias DLLAVE
+    (7) sentencia -> . IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE
+
+    DLLAVE          shift and go to state 66
+    IMP             shift and go to state 4
+    ID              shift and go to state 5
+    FOR             shift and go to state 6
+    IF              shift and go to state 7
+
+    sentencia                      shift and go to state 8
+
+state 66
+
+    (7) sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .
+
+    IMP             reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+    ID              reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+    FOR             reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+    IF              reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+    $end            reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+    TO              reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+    DLLAVE          reduce using rule 7 (sentencia -> IF condicion THEN ILLAVE listaSentencias DLLAVE ELSE ILLAVE listaSentencias DLLAVE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for RESTA in state 7 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 9 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 10 resolved as shift
+WARNING: shift/reduce conflict for ID in state 10 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 17 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 18 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 26 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 28 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 29 resolved as shift
+WARNING: shift/reduce conflict for ID in state 29 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 30 resolved as shift
+WARNING: shift/reduce conflict for ID in state 30 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 31 resolved as shift
+WARNING: shift/reduce conflict for ID in state 31 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 32 resolved as shift
+WARNING: shift/reduce conflict for ID in state 32 resolved as shift
+WARNING: shift/reduce conflict for RESTA in state 40 resolved as shift
+WARNING: shift/reduce conflict for ID in state 40 resolved as shift
